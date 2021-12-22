@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import MessageForm
+from .models import Message
 from django.http import HttpResponse
 
 
@@ -11,5 +12,10 @@ def index(request):
     }
     if request.method == 'POST':
         if form.is_valid():
+            Message.objects.create(name=form.cleaned_data['name'], body=form.cleaned_data['body'])
+            form = MessageForm()
+            context = {
+                'form': form
+            }
             return render(request, 'message_board/index.html', context)
     return render(request, 'message_board/index.html', context)
