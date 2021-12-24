@@ -1,0 +1,2 @@
+/*hide django all form errors*/
+ul.errorlist {display:none;}
