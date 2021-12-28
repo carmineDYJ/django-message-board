@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Title</title>
+    <title>Message Board</title>
     <meta name="description" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,8 +20,19 @@
         <input type="submit" value="submit">
     </form>
     {% for message in message_list %}
-        <p>{{ message.name }}</p>
-        <p>{{ message.body }}</p>
+        <div class="message">
+            <p>name: {{ message.name }}</p>
+            {% if message.days_from_now > 0 %}
+                <p>time: {{ message.days_from_now }} days ago</p>
+            {% elif message.hours_from_now > 0 %}
+                <p>time: {{ message.hours_from_now }} hours ago</p>
+            {% elif message.minutes_from_now > 0 %}
+                <p>time: {{ message.minutes_from_now }} minutes ago</p>
+            {% else %}
+                <p>time: just now</p>
+            {% endif %}
+            <p>body: {{ message.body }}</p>
+        </div>
     {% endfor %}
 </main>
 <script src="{% static 'message_board/js/bootstrap.bundle.min.js' %}"></script>

@@ -1,2 +1,11 @@
 /*hide django all form errors*/
-ul.errorlist {display:none;}
+ul.errorlist {
+    display:none;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.message{
+}
