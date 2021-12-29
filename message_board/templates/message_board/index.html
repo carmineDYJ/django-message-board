@@ -19,9 +19,18 @@
         {{ form }}
         <input type="submit" value="submit">
     </form>
-    {% for message in message_list %}
+
+    {% if message_list|length > 0 %}
+        <p>{{ message_list|length }} messages</p>
+    {% else %}
+        <p>0 message</p>
+    {% endif %}
+
+    {#display messages in a reverse order#}
+    {% for message in message_list reversed %}
         <div class="message">
             <p>name: {{ message.name }}</p>
+            <p>#{{ forloop.counter }}</p>
             {% if message.days_from_now > 0 %}
                 <p>time: {{ message.days_from_now }} days ago</p>
             {% elif message.hours_from_now > 0 %}
@@ -34,7 +43,7 @@
             <p>body: {{ message.body }}</p>
         </div>
     {% endfor %}
-<button><a href="#top">top</a></button>
+    <button><a href="#top">top</a></button>
 </main>
 <script src="{% static 'message_board/js/bootstrap.bundle.min.js' %}"></script>
 </body>

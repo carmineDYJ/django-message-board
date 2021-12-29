@@ -2,10 +2,16 @@
 ul.errorlist {
     display:none;
 }
+body{
+    background: darkgray;
+}
 main{
+    min-width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .message{
+    min-width: 100%;
+    border: 1px solid black;
 }
