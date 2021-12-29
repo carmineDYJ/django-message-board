@@ -13,7 +13,7 @@
 </head>
 <body>
 <main>
-    <h1>Say Hi to the World!</h1>
+    <h1 id="top">Say Hi to the World!</h1>
     <form method="post">
         {% csrf_token %}
         {{ form }}
@@ -34,6 +34,7 @@
             <p>body: {{ message.body }}</p>
         </div>
     {% endfor %}
+<button><a href="#top">top</a></button>
 </main>
 <script src="{% static 'message_board/js/bootstrap.bundle.min.js' %}"></script>
 </body>

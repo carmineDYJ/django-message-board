@@ -2,12 +2,12 @@ from django.shortcuts import render
 from .forms import MessageForm
 from .models import Message
 from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.timezone import now
 
 
 # Create your views here.
 def index(request):
-    print(request.method)
     form = MessageForm(request.POST)
 
     if request.method == 'POST':
@@ -18,22 +18,12 @@ def index(request):
                 message['days_from_now'] = (now() - message['timestamp']).days
                 message['hours_from_now'] = (now() - message['timestamp']).seconds // 3600
                 message['minutes_from_now'] = ((now() - message['timestamp']).seconds // 60) % 60
-            # reset form to blank
-            # form = MessageForm()
-            context = {
-                'form': form,
-                'message_list': message_list
-            }
-            return render(request, 'message_board/index.html', context)
-        # else:
-        #     for value in form.errors.get_json_data().values():
-        #         error_message = value[0]['message']
-        #     context = {
-        #         'form': form,
-        #         'message_list': message_list,
-        #         # 'error_message': error_message
-        #     }
-        #     return render(request, 'message_board/index.html', context)
+            # always return HttpResponseRedirect after successfully dealing with POST data
+            return HttpResponseRedirect('/')
+        else:
+            for value in form.errors.get_json_data().values():
+                error_message = value[0]['message']
+            return HttpResponseRedirect('/')
     elif request.method == 'GET':
         message_list = list(Message.objects.values())
         for message in message_list:
