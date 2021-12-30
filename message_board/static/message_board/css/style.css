@@ -3,15 +3,45 @@ ul.errorlist {
     display:none;
 }
 body{
-    background: darkgray;
+    background: #eaedee;
 }
 main{
-    min-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 600px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+#page-title{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    color: #8f9293;
+}
+.page-title-small-part{
+    margin-left: 10px;
+    font-size: 15px;
+}
 .message{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     min-width: 100%;
-    border: 1px solid black;
+    border: 1px solid #909394;
+    background: #ffffff;
+    padding: 10px;
+}
+.message p{
+    color: #787878;
+}
+.message > .message-name-index-time{
+    display: flex;
+}
+.message > .message-name-index-time > .message-index{
+    margin-left: 10px
+}
+.message > .message-name-index-time > .message-time{
+    margin-left: auto;
 }
