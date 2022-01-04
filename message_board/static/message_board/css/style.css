@@ -24,6 +24,13 @@ main{
     margin-left: 10px;
     font-size: 15px;
 }
+.message-form {
+    color: #8f9293;
+}
+.message-form input, .message-form textarea{
+    border-radius: 4px;
+    border: 1px solid #8f9293;
+}
 .message-count{
     min-width: 100%;
     margin-top: 30px;

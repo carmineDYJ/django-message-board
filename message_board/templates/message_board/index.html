@@ -17,9 +17,21 @@
     <h1 id="page-title">Say Hi
         <div class="page-title-small-part">to the world</div>
     </h1>
-    <form method="post">
+    <form class="message-form" method="post">
         {% csrf_token %}
-        {{ form }}
+        {#        {{ form }}#}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }}
+                <br>
+                {{ field }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+
+            </div>
+        {% endfor %}
         <input type="submit" value="submit">
     </form>
 
@@ -29,7 +41,8 @@
         {% else %}
             <p>0 message</p>
         {% endif %}
-        <button class="button-to-page-bottom"><a href="#page-bottom"><img src="{% static 'message_board/img/arrowdown.png' %}" alt="button to page bottom"></a></button>
+        <button class="button-to-page-bottom"><a href="#page-bottom"><img
+                src="{% static 'message_board/img/arrowdown.png' %}" alt="button to page bottom"></a></button>
     </div>
 
     {#display messages in a reverse order#}
@@ -55,9 +68,10 @@
     {% endfor %}
     <footer>
         <p>&copy; 2021 carmine</p>
-        <button class="button-to-page-top"><a href="#page-top"><img src="{% static 'message_board/img/arrowup.png' %}" alt="button to page top"></a></button>
+        <button class="button-to-page-top"><a href="#page-top"><img src="{% static 'message_board/img/arrowup.png' %}"
+                                                                    alt="button to page top"></a></button>
     </footer>
-   <div id="page-bottom">
+    <div id="page-bottom">
     </div>
 </main>
 <script src="{% static 'message_board/js/bootstrap.bundle.min.js' %}"></script>
