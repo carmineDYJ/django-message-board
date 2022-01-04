@@ -29,7 +29,7 @@
         {% else %}
             <p>0 message</p>
         {% endif %}
-        <button><a href="#page-bottom">bottom</a></button>
+        <button class="button-to-page-bottom"><a href="#page-bottom"><img src="{% static 'message_board/img/arrowdown.png' %}" alt="button to page bottom"></a></button>
     </div>
 
     {#display messages in a reverse order#}
@@ -53,9 +53,11 @@
             <p>{{ message.body }}</p>
         </div>
     {% endfor %}
-    <footer>2021 carmine</footer>
-    <button><a href="#page-top">top</a></button>
-    <div id="page-bottom">
+    <footer>
+        <p>&copy; 2021 carmine</p>
+        <button class="button-to-page-top"><a href="#page-top"><img src="{% static 'message_board/img/arrowup.png' %}" alt="button to page top"></a></button>
+    </footer>
+   <div id="page-bottom">
     </div>
 </main>
 <script src="{% static 'message_board/js/bootstrap.bundle.min.js' %}"></script>
