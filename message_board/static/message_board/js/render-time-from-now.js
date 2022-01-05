@@ -1,4 +1,5 @@
 moment.locale('en');
-let now = moment();
-console.log(now);
-// $('.message-time').css('background', 'pink');
+$('.message-time').each(function () {
+    let from_now = moment($(this).text().replace("T", " ")).fromNow()
+    $(this).text(from_now);
+});

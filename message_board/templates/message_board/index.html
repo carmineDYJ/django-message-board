@@ -22,7 +22,6 @@
     </h1>
     <form class="message-form" method="post">
         {% csrf_token %}
-        {#        {{ form }}#}
         {% for field in form %}
             <div class="fieldWrapper">
                 {{ field.errors }}
@@ -32,7 +31,6 @@
                 {% if field.help_text %}
                     <p class="help">{{ field.help_text|safe }}</p>
                 {% endif %}
-
             </div>
         {% endfor %}
         <input type="submit" value="submit">
@@ -55,15 +53,16 @@
                 <p class="message-name">{{ message.name }}</p>
                 <p class="message-index">#{{ forloop.counter }}</p>
                 <p class="message-time">
-                    {% if message.days_from_now > 0 %}
-                        {{ message.days_from_now }} days ago
-                    {% elif message.hours_from_now > 0 %}
-                        {{ message.hours_from_now }} hours ago
-                    {% elif message.minutes_from_now > 0 %}
-                        {{ message.minutes_from_now }} minutes ago
-                    {% else %}
-                        a few seconds ago
-                    {% endif %}
+                    {{ message.timestamp|date:"c" }}
+{#                    {% if message.days_from_now > 0 %}#}
+{#                        {{ message.days_from_now }} days ago#}
+{#                    {% elif message.hours_from_now > 0 %}#}
+{#                        {{ message.hours_from_now }} hours ago#}
+{#                    {% elif message.minutes_from_now > 0 %}#}
+{#                        {{ message.minutes_from_now }} minutes ago#}
+{#                    {% else %}#}
+{#                        a few seconds ago#}
+{#                    {% endif %}#}
                 </p>
             </div>
             <p>{{ message.body }}</p>
