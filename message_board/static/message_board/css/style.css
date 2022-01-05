@@ -17,12 +17,12 @@ main{
 #page-title{
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: baseline;
     color: #8f9293;
 }
 .page-title-small-part{
     margin-left: 10px;
-    font-size: 15px;
+    font-size: 20px;
 }
 .message-form {
     color: #8f9293;
@@ -38,7 +38,6 @@ main{
     margin-top: 30px;
     display: flex;
     color: #4d5050;
-    font-size: 30px;
     justify-content: space-between;
     align-items: center;
 }
