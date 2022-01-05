@@ -3,7 +3,7 @@ from .forms import MessageForm
 from .models import Message
 from django.http import HttpResponse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.utils.timezone import now
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -20,6 +20,9 @@ def index(request):
             return HttpResponseRedirect('/')
     elif request.method == 'GET':
         message_list = list(Message.objects.values())
+        # paginator = Paginator(message_list, 2)
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
         context = {
             'form': form,
             'message_list': message_list,
