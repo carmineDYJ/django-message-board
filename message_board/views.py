@@ -20,12 +20,6 @@ def index(request):
             return HttpResponseRedirect('/')
     elif request.method == 'GET':
         message_list = list(Message.objects.values())
-        for m in message_list:
-            print(m['timestamp'])
-        # for message in message_list:
-        #     message['days_from_now'] = (now() - message['timestamp']).days
-        #     message['hours_from_now'] = (now() - message['timestamp']).seconds // 3600
-        #     message['minutes_from_now'] = ((now() - message['timestamp']).seconds // 60) % 60
         context = {
             'form': form,
             'message_list': message_list,
