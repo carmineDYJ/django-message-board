@@ -20,12 +20,15 @@ def index(request):
             return HttpResponseRedirect('/')
     elif request.method == 'GET':
         message_list = list(Message.objects.values())
-        # paginator = Paginator(message_list, 2)
+        message_per_page = 2
+        page_total_count = len(message_list)
+        # paginator = Paginator(message_list, message_per_page)
         # page_number = request.GET.get('page')
         # page_obj = paginator.get_page(page_number)
         context = {
             'form': form,
             'message_list': message_list,
-            'index': len(message_list)
+            'index': len(message_list),
+            'page_total_count': page_total_count
         }
         return render(request, 'message_board/index.html', context)
