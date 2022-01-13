@@ -37,8 +37,8 @@
     </form>
 
     <div class="message-count">
-        {% if message_list|length > 0 %}
-            <h5>{{ message_list|length }} messages</h5>
+        {% if message_count > 0 %}
+            <h5>{{ message_count }} messages</h5>
         {% else %}
             <h5>0 message</h5>
         {% endif %}
@@ -62,21 +62,6 @@
         <button class="button-to-page-top"><a href="#page-top"><img src="{% static 'message_board/img/arrowup.png' %}"
                                                                     alt="button to page top"></a></button>
         <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="/?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="/?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="/?page=3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
         </ul>
     </footer>
     <div id="page-bottom">
@@ -88,6 +73,10 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment-with-locales.js"></script>
 <script src="{% static 'message_board/js/render-time-from-now.js' %}"></script>
-<script src="{% static 'message_board/js/pagination-button.js' %}"></script>
+<script>
+    let num_pages = {{ num_pages }};
+    let message_per_page ={{ message_per_page }};
+</script>
+<script src="{% static 'message_board/js/render-pagination-button.js' %}"></script>
 </body>
 </html>
