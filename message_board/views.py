@@ -4,6 +4,7 @@ from .models import Message
 from django.http import HttpResponse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
+from math import ceil
 
 
 # Create your views here.
@@ -20,15 +21,13 @@ def index(request):
             return HttpResponseRedirect('/')
     elif request.method == 'GET':
         message_list = list(Message.objects.values())
-        message_per_page = 2
-        page_total_count = len(message_list)
-        # paginator = Paginator(message_list, message_per_page)
-        # page_number = request.GET.get('page')
-        # page_obj = paginator.get_page(page_number)
+        paginator = Paginator(message_list, per_page=5)
+        message_page_number = request.GET.get('page')
+        message_page_obj = paginator.get_page(message_page_number)
         context = {
             'form': form,
-            'message_list': message_list,
-            'index': len(message_list),
-            'page_total_count': page_total_count
+            'message_page_obj': message_page_obj,
+            'num_pages': paginator.num_pages,
+            'page_start_index': message_page_obj.start_index()
         }
         return render(request, 'message_board/index.html', context)
