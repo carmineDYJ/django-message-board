@@ -52,7 +52,7 @@
             <div class="message-name-index-time">
                 <p class="message-name">{{ message.name }}</p>
                 <p class="message-index">#{{ forloop.counter|add:page_start_index|add:-1 }}</p>
-                <p class="message-time" data-timestamp={{ message.timestamp|date:"c" }}></p>
+                <p class="message-time" data-bs-toggle="tooltip" data-bs-placement="top" title={{ message.timestamp|date:"Y.m.d.H:iA" }} data-timestamp={{ message.timestamp|date:"c" }}></p>
             </div>
             <p>{{ message.body }}</p>
         </div>
@@ -78,5 +78,6 @@
     let message_page_number ={{ message_page_number }};
 </script>
 <script src="{% static 'message_board/js/render-pagination-button.js' %}"></script>
+<script src="{% static 'message_board/js/initialize_bootstrap_tooltip.js' %}"></script>
 </body>
 </html>
