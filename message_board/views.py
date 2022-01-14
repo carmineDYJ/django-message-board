@@ -20,7 +20,7 @@ def index(request):
                 error_message = value[0]['message']
             return HttpResponseRedirect('/')
     elif request.method == 'GET':
-        message_list = list(Message.objects.values())
+        message_list = list(Message.objects.values())[::-1]
         message_per_page = 10
         paginator = Paginator(message_list, per_page=message_per_page)
         message_page_number = 1 if not request.GET.get('page') else request.GET.get('page')

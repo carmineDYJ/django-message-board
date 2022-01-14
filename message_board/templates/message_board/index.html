@@ -47,7 +47,7 @@
     </div>
 
     {#display messages in a reverse order#}
-    {% for message in message_page_obj reversed %}
+    {% for message in message_page_obj%}
         <div class="message">
             <div class="message-name-index-time">
                 <p class="message-name">{{ message.name }}</p>
