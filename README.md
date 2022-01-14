@@ -14,8 +14,12 @@ use pip to install all dependencies.
 pip install -r requirements.txt
 ```
 ## Usage
-edit mysql settings in django_message_board settings.py
+create database in mysql
+```sql
+CREATE DATABASE django_message_board CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+edit mysql settings in django_message_board settings.py
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -27,7 +31,10 @@ DATABASES = {
     }
 }
 ```
-
+generate fake data if you need
+```
+python -m scripts.fake
+```
 If you have installed all the dependencies, then you can run the project locally by running the command below in the root directory of the project.
 ```
 python manage.py runserver
